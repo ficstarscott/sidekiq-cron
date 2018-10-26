@@ -1,10 +1,5 @@
 #require  Sidekiq original launcher
-if ['staging', 'production'].include?(ENV['RAILS_ENV'])
-  sidekiq_path = Gem::Specification.find_by_name('sidekiq').gem_dir.gsub(/^\/images\/crawler[^\/]*/, '')
-  require "#{sidekiq_path}/lib/sidekiq/launcher"
-else
-  require 'sidekiq/launcher'
-end
+require 'sidekiq/launcher'
 
 #require cron poller
 require 'sidekiq/cron/poller'
